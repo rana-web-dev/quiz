@@ -17,7 +17,7 @@ const QuizContent = () => {
 const Question = ({ questions }) => {
   const { options, question, correctAnswer } = questions
   const handleOptionClick = ans => {
-    const isCorrect = answer === correctAnswer
+    const isCorrect = ans === correctAnswer
 
     alert(`Correct: ${isCorrect}`)
   }
