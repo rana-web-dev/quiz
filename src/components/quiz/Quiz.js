@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import './Quiz.css';
 
 const Quiz = () => {
@@ -23,15 +23,21 @@ const Quiz = () => {
 };
 
 const Item = ({ item }) => {
-    const { name, logo } = item;
+    const {id, name, logo } = item;
+    const router = useNavigate();
+    const handleClick = () => {
+        router(`/Quiz/${id}`)
+    }
     return (
-        <div className='w-30 rounded-md bg'> 
+        <div className='w-30 rounded-md bg'>
             <div>
                 <img src={logo} alt=''></img>
             </div>
             <div className='flex justify-between p-2'>
                 <p className='font-bold'>{name}</p>
-                <button className='bg-blue-500 text-white font-bold py-1 px-3 rounded-md cursor-pointer'>Quiz</button>
+                <button
+                    onClick={handleClick}
+                    className='bg-blue-500 text-white font-bold py-1 px-3 rounded-md cursor-pointer'>Quiz</button>
             </div>
         </div>
     )
